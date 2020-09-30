@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ChatService } from '../../services/chat.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private chatService: ChatService) { }
 
+  rooms$: Observable<Array<string>>;
   ngOnInit() {
+    this.rooms$ = this.chatService.rooms$;
   }
 
 }

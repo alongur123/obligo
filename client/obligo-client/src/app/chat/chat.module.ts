@@ -5,6 +5,8 @@ import { RoomComponent } from './components/room/room.component';
 import {HomeComponent} from './containers/home/home.component';
 import {MessageComponent} from './components/message/message.component';
 import { ChatRoutes } from './chat.routing';
+import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { ChatRoutes } from './chat.routing';
   ],
   imports: [
     CommonModule,
-    ChatRoutes
+    ChatRoutes,
+    HttpClientModule,    
+    MatCardModule
   ]
 })
 export class ChatModule { }
