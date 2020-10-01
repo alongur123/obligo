@@ -1,5 +1,15 @@
-<h1>chat  {{roomName}}</h1>
+<div class="frame">
 
-<div *ngFor="let item of messages$ | async">
-<app-message [message]="item"></app-message>
+  <h1>chat</h1>
+
+  <div *ngFor="let item of messages$ | async">
+    <app-message [message]="item"  [user]="'username'"></app-message>
+  </div>
+  <div class="dif"></div>
+  <div >
+    <div class="textBox">
+      <input class="mytext" [value]="text" placeholder="Type a message" />
+      <button mat-button (click)="sendMessage(text)">send</button>
+    </div>   
+  </div>
 </div>

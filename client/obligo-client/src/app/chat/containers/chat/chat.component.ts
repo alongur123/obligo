@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Message } from '../../models/message';
 import { ChatService } from '../../services/chat.service';
 
 @Component({
@@ -10,15 +11,18 @@ import { ChatService } from '../../services/chat.service';
 })
 export class ChatComponent implements OnInit {
 
-  constructor(private chatService: ChatService, private route: ActivatedRoute) { }
+  constructor(private chatService: ChatService) { }
 
-  messages$: Observable<Array<string>>;
-  roomName;
+  messages$: Observable<Array<Message>>;
+  text = "";
+  
   ngOnInit() {
     this.messages$ = this.chatService.messages$;
-    this.route.params.subscribe(x=> {      
-      this.roomName = x["room"];
-    })
+
+  }
+
+  sendMessage(text){
+    this.chatService.addToMessage(text);
   }
 
 }

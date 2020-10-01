@@ -1,0 +1,19 @@
+  .frame {
+    background: #e0e0de;
+    height: 100%;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .textBox {
+    border: 0;
+    padding: 10px;
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  .dif {
+    min-height: 50px !important;
+  }

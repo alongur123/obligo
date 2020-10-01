@@ -5,6 +5,7 @@ import {MessageComponent} from './components/message/message.component';
 import { ChatRoutes } from './chat.routing';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { MatCardModule } from '@angular/material/card';
     CommonModule,
     ChatRoutes,
     HttpClientModule,    
-    MatCardModule
+    MatCardModule,
+    MatButtonModule,
   ]
 })
 export class ChatModule { }

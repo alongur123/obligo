@@ -1,4 +1,5 @@
-class User{
+
+export class User{
     name: string;
 
     constructor(name: string){
