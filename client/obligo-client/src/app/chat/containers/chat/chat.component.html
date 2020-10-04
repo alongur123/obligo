@@ -1,15 +1,11 @@
 <div class="frame">
 
-  <h1>chat</h1>
+  <h2 style="color: rgb(24, 157, 14);"><i aria-hidden="true" class="fa fa-whatsapp"></i> Whatsapp </h2>
+  <div class="textBox">
+    <input class="mytext" #text (keyup.enter)="sendMessage(text.value)" placeholder="Type a message" />
+  </div>   
 
   <div *ngFor="let item of messages$ | async">
-    <app-message [message]="item"  [user]="'username'"></app-message>
-  </div>
-  <div class="dif"></div>
-  <div >
-    <div class="textBox">
-      <input class="mytext" [value]="text" placeholder="Type a message" />
-      <button mat-button (click)="sendMessage(text)">send</button>
-    </div>   
-  </div>
+    <app-message [message]="item"  [currentName]="currentName"></app-message>
+  </div>  
 </div>

@@ -1,6 +1,7 @@
   .frame {
-    background: #e0e0de;
+    background: #E9F2F6;
     height: 100%;
+    width: 70%;
     overflow: hidden;
     padding: 0;
   }
@@ -17,3 +18,13 @@
   .dif {
     min-height: 50px !important;
   }
+  .fa-whatsapp:before {
+    content: "\f232";
+}
+.fa{
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}

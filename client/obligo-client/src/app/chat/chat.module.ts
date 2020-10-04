@@ -11,11 +11,11 @@ import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [
     ChatComponent,
-    MessageComponent
+    MessageComponent,
   ],
   exports: [
     ChatComponent,
-    MessageComponent
+    MessageComponent,
   ],
   imports: [
     CommonModule,

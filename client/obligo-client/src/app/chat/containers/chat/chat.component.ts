@@ -14,15 +14,15 @@ export class ChatComponent implements OnInit {
   constructor(private chatService: ChatService) { }
 
   messages$: Observable<Array<Message>>;
-  text = "";
-  
-  ngOnInit() {
-    this.messages$ = this.chatService.messages$;
+  currentName: string;
 
+  ngOnInit() {
+    this.messages$ = this.chatService.messages$;    
   }
 
   sendMessage(text){
     this.chatService.addToMessage(text);
+    text = '';
   }
 
 }

@@ -1,6 +1,11 @@
+const faker = require('faker')
+
 function applySocketMethods(io){
     io.on('connection', (socket) => {
-        console.log('a user connected');
+        socket.emit('getName', faker.name.findName())
+        socket.on("sendMessage", message => {            
+            io.emit("gotMessage", message);
+          });
       });
 }
 

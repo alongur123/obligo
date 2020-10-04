@@ -1,35 +1,39 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Message } from '../models/message';
+import { Socket } from 'ngx-socket-io';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
 
-  private messagesSubject = new BehaviorSubject([new Message("aaa", new Date(), true)
-    , new Message("bbb", new Date(), true)
-    , new Message("ccc", new Date(), true),
-    new Message("aaa", new Date(), false)]);
+  private messagesSubject = new BehaviorSubject([]);
 
-  private roomsSubject = new BehaviorSubject(["alon", "bla", "bka"]);
+  public currentName: string;
 
   public get messages$() {
-    return this.messagesSubject.asObservable();
+    return this.messagesSubject.pipe(map(messages => {
+      messages.sort((a, b) => new Date(b.time).getTime() - new Date(a.time).getTime())
+      return messages;
+    }));
   }
 
-  public get rooms$() {
-    return this.roomsSubject.asObservable();
+  public addToMessage(text) {
+    this.socket.emit('sendMessage', {text, userName: this.currentName});
   }
 
-  public addToMessage(text){
-    this.messagesSubject.next([...this.messagesSubject.value,new Message(text, new Date(), true) ])
-  }
-
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private socket: Socket) {
     // this.http.get<Array<string>>('/api/messages').subscribe(value => {
     //   this.messages.next(value);
     // });
+    this.socket.on('gotMessage', (textObj) => {      
+      this.messagesSubject.next([...this.messagesSubject.value, new Message(textObj.text, new Date(),textObj.userName)])
+    });
+    this.socket.on('getName', (name) => {
+      this.currentName = name;
+    });
   }
 }

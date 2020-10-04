@@ -1,12 +1,7 @@
-<div class="main">
-  <div class="msj macro">
-    <div class="avatar">
-      <h3 class="img-circle" style="width:100%;">{{user}}</h3>
-
-    </div>
-    <div class="text text-l">
+<div  [ngClass]="message.userName === currentName ? 'main' : 'main-right'">
+  <h3>{{message.userName}}:</h3>
+    <div class="text">
       <p>{{message.text}}</p>
-      <p><small>{{message.time}}</small></p>
+      <p><small>{{message.time | date: 'hh:mm'}}</small></p>
     </div>
-  </div>
 </div>
