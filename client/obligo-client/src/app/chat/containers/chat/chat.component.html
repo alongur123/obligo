@@ -1,8 +1,8 @@
 <div class="frame">
 
-  <h2 style="color: rgb(24, 157, 14);"><i aria-hidden="true" class="fa fa-whatsapp"></i> Whatsapp </h2>
+  <h2 class="whatsapp">Chat <i aria-hidden="true" class="fa fa-whatsapp"></i> </h2>
   <div class="textBox">
-    <input class="mytext" #text (keyup.enter)="sendMessage(text.value)" placeholder="Type a message" />
+    <input class="mytext" #text (keyup.enter)="sendMessage(text.value, text)" placeholder="Type a message" />
   </div>   
 
   <div *ngFor="let item of messages$ | async">

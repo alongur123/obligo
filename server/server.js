@@ -1,19 +1,20 @@
 const bodyParser = require('body-parser');
-const {applyRoute} = require('./api/user/user.router');
 const {applySocketMethods} = require('./lib/socket');
+const {config} = require('./config');
 
 var app = require('express')();
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-applyRoute(app)
-
+// create server
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
+// apply socket methods
 applySocketMethods(io);
 
-http.listen(3000, () => {
-  console.log('listening on *:3000');
+// run server
+http.listen(config.port, () => {
+  console.log(`listening on *:${config.port}`);
 });

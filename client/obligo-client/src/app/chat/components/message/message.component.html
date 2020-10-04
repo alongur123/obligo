@@ -1,7 +1,5 @@
-<div  [ngClass]="message.userName === currentName ? 'main' : 'main-right'">
-  <h3>{{message.userName}}:</h3>
-    <div class="text">
-      <p>{{message.text}}</p>
-      <p><small>{{message.time | date: 'hh:mm'}}</small></p>
-    </div>
+<div class="main" [ngClass]="message.userName === currentName ? 'main-left' : 'main-right'">
+  <p class="userName">{{message.userName}}:</p>
+      <p class="text">{{message.text}}</p>
+    <p class="date"><small>{{message.time | date: 'hh:mm'}}</small></p>
 </div>

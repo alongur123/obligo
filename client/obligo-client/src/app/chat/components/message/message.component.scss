@@ -1,19 +1,33 @@
-.main{
-  display: flex;
-  justify-content: space-around;
-  background-color: white;
-  width: 70%;
-  border: 3px solid antiquewhite;
-  float: left;
-  margin: 10px;
+.main {
+  grid-template-columns: 2fr 4fr 1fr;
+    display: grid;
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1em 0;
+  min-height: 50px;
+  height: auto;
+  width: 55%;
+  border-radius: 5px;
+  margin: 1em 1em;
+  overflow: hidden;
 }
 
-.main-right{
-  display: flex;
-  justify-content: space-around;
-  background-color: white;
-  width: 70%;
-  border: 3px solid antiquewhite;
+.main-left {
+  float: left;
+}
+
+.text {
+  word-break: break-all;
+}
+.date{
+  margin-top: 15px;
+  padding-right: 20px; 
+  text-align: end;
+}
+.userName{
+  font-weight: bold;
+}
+
+.main-right {
   float: right;
-  margin: 10px;
 }

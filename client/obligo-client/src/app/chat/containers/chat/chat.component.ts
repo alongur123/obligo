@@ -17,12 +17,11 @@ export class ChatComponent implements OnInit {
   currentName: string;
 
   ngOnInit() {
-    this.messages$ = this.chatService.messages$;    
+    this.messages$ = this.chatService.messages$;
   }
 
-  sendMessage(text){
+  sendMessage(text, input) {
     this.chatService.addToMessage(text);
-    text = '';
+    input.value = '';
   }
-
 }
