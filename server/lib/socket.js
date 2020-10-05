@@ -2,11 +2,12 @@ const faker = require('faker');
 const redis = require('redis');
 
 // create redis client for subscribe and publish
-// let sub = redis.createClient({host: 'redis'});
-// let pub = redis.createClient({host: 'redis'});
-let sub = redis.createClient();
-let pub = redis.createClient();
-let chatList = redis.createClient();
+let sub = redis.createClient({host: 'redis'});
+let pub = redis.createClient({host: 'redis'});
+let chatList = redis.createClient({host: 'redis'});
+// let sub = redis.createClient();
+// let pub = redis.createClient();
+// let chatList = redis.createClient();
 
 // subscribe to chat
 sub.subscribe('chat');
