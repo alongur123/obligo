@@ -20,6 +20,7 @@ export class ChatComponent implements OnInit {
     this.messages$ = this.chatService.messages$;
   }
 
+  // send message and empty input
   sendMessage(text, input) {
     this.chatService.addToMessage(text);
     input.value = '';

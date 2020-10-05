@@ -14,6 +14,7 @@ export class MessageComponent implements OnInit {
   @Input() message: Message;
    currentName: string;
 
+   // get the name from the service
   ngOnInit() {
     this.currentName = this.chatService.currentName;
   }

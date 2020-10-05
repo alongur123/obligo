@@ -23,22 +23,32 @@ export class ChatService {
   }
 
   public addToMessage(text) {
-    this.socket.emit('sendMessage', {text, userName: this.currentName});
+    this.socket.emit('sendMessage', { text, userName: this.currentName });
   }
 
-  constructor(private http: HttpClient, private socket: Socket) {    
+  constructor(private http: HttpClient, private socket: Socket) {
 
     // register to send messages event
     this.socket.on('gotMessage', (textObj) => {
       textObj = JSON.parse(textObj);
 
       // add message to array
-      this.messagesSubject.next([...this.messagesSubject.value, new Message(textObj.text, new Date(),textObj.userName)])
+      this.messagesSubject.next([...this.messagesSubject.value,
+      new Message(textObj.text, textObj.date, textObj.userName)])
     });
 
     // get name from server
     this.socket.on('getName', (name) => {
       this.currentName = name;
+    });
+
+    // get the messages history
+    this.socket.on('getHistory', (messages) => {
+      const messageObj = messages.map(message => {
+        message = JSON.parse(message)
+        return new Message(message.text, message.date, message.userName)
+      });
+      this.messagesSubject.next(messageObj);
     });
   }
 }
